@@ -59,12 +59,11 @@ public class Main {
                             "Connection: close\r\n" +
                             "\r\n" +
                             body;
-
             output.write(httpResponse);
             output.flush();
 
         } catch (Exception e) {
-            System.err.println("❌ Error handling client: " + e.getMessage());
+            System.err.println("Error handling client: " + e.getMessage());
         } finally {
             try {
                 socket.close();
