@@ -73,7 +73,7 @@ public class Main {
 
     public static String buildEmojiTree(int height) {
         StringBuilder sb = new StringBuilder();
-        String E = "🌲 ";   // emoji + пробел → одинаковая ширина
+        String E = "🌲 ";
 
         for (int i = 1; i <= height; i++) {
             sb.append(" ".repeat(height - i));
