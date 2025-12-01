@@ -13,5 +13,4 @@ public class ResponseDto {
     private Integer id;
     private String amount;
     private String description;
-
 }

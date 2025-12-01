@@ -43,6 +43,7 @@ public class PaymentServiceImpl implements PaymentService {
       ResponseDto responseDto= paymentMapper.toDto(entity.get());
         log.info("ActionLog.getById.success id:{}",id);
         return responseDto;
+
     }
 
     @Override

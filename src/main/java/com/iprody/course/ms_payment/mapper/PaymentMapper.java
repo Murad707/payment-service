@@ -22,4 +22,5 @@ public interface PaymentMapper {
 
     List<ResponseDto> toDtoList(List<PaymentEntity> entities);
 
+
 }

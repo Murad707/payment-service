@@ -10,6 +10,7 @@ import lombok.Setter;
 public class ExceptionMessageModel {
     private String message;
 
+
     @Override
     public String toString() {
         return "{\"message\":\"" + message + "\"}";

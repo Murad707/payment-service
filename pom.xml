@@ -23,6 +23,7 @@
 
     <dependencies>
 
+
         <!-- ✅ REST + JSON (Jackson внутри) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

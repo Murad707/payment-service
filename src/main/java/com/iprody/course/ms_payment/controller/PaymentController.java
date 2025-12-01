@@ -24,7 +24,6 @@ public class PaymentController {
     public List<PaymentEntity> getAllPayments() {
         return paymentService.getAllPayments();
     }
-
     @GetMapping("/{id}")
     public ResponseDto getPaymentById(@PathVariable Integer id) {
         return paymentService.getById(id);

@@ -11,6 +11,7 @@ public class ServiceException extends RuntimeException{
     private HttpStatus status;
     private String message;
 
+
     private static final String EMPTY_MESSAGE=" ";
 
     public ServiceException(Error error){
