@@ -22,20 +22,19 @@
     </properties>
 
     <dependencies>
-
-        <!-- ✅ REST + JSON (Jackson внутри) -->
+        <!-- ✅ REST API + JSON -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- ✅ JPA + Hibernate + HikariCP pool -->
+        <!-- ✅ JPA / Hibernate / Pool -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- ✅ PostgreSQL JDBC Driver (не надо скачивать вручную) -->
+        <!-- ✅ PostgreSQL JDBC driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -58,19 +57,11 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- ✅ Spring Boot tests (JUnit5 + Mockito и т.д.) -->
+        <!-- ✅ Spring Boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- ✅ MapStruct processor должен быть в compiler plugin, а не зависимостях -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>1.5.5.Final</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -78,35 +69,50 @@
     <build>
         <plugins>
 
-            <!-- ✅ Java compiler + processors -->
+            <!-- ✅ Maven Compiler + Lombok + MapStruct processor -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
                     <annotationProcessorPaths>
-
-                        <!-- Lombok -->
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.32</version>
-                        </path>
-
-                        <!-- MapStruct -->
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>1.5.5.Final</version>
                         </path>
-
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.32</version>
+                        </path>
                     </annotationProcessorPaths>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
             </plugin>
 
-            <!-- ✅ Spring Boot run/plugin -->
+            <!-- ✅ Checkstyle (non-breaking) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <configLocation>src/main/resources/checkstyle.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failOnViolation>false</failOnViolation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ✅ Spring Boot plugin (build/run JAR) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
